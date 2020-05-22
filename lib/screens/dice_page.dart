@@ -72,6 +72,10 @@ class DicePage extends StatelessWidget {
                     child: Column(
                       children: <Widget>[
                         Text(
+                          'Round: ${game.rounds + 1}',
+                          style: kTurnLabelTextStyle,
+                        ),
+                        Text(
                           _turnLabels[game.turn],
                           style: kTurnLabelTextStyle,
                         ),

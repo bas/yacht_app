@@ -17,6 +17,8 @@ class GameService with ChangeNotifier {
 
   get turn => _turn;
 
+  int get rounds => _rounds.length;
+
   void rollDices() {
     if (_turn < 3) {
       _dices.forEach((dice) {
@@ -76,6 +78,9 @@ class GameService with ChangeNotifier {
     _categorySelected = null;
     _dices = List.generate(5, (index) => DiceModel());
     _currentIndex = 0;
+    if (_rounds.length == 12) {
+       _rounds.clear();
+    }
     notifyListeners();
   }
 
@@ -89,4 +94,5 @@ class GameService with ChangeNotifier {
     _currentIndex = index;
     notifyListeners();
   }
+
 }

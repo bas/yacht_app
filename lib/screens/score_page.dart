@@ -84,7 +84,7 @@ class ScoreCardPage extends StatelessWidget {
                 Text(e, style: kTableTextStyle),
               ),
               DataCell(
-                Text(game.getScoreAsString(e), style: kTableTextStyle),
+                Text(game.getScoreAsString(e), style: kTableTextStyle,),
               ),
             ],
           ),
@@ -92,7 +92,7 @@ class ScoreCardPage extends StatelessWidget {
         .toList());
     dataRows.add(
       DataRow(cells: [
-        DataCell(Text('')),
+        DataCell.empty,
         DataCell(Text(
           'Total',
           style: kTableTextStyle,
