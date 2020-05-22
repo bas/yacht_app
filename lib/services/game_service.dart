@@ -17,7 +17,7 @@ class GameService with ChangeNotifier {
 
   get turn => _turn;
 
-  int get rounds => _rounds.length;
+  int get round => _rounds.length;
 
   void rollDices() {
     if (_turn < 3) {
