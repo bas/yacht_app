@@ -13,54 +13,32 @@ class ScoreCardPage extends StatelessWidget {
       return Scaffold(
         backgroundColor: Colors.blue,
         appBar: AppBar(
-          title: Text('Yacht Dice Game'),
+          title: Text(kAppTitle, style: kAppBarTitleTextStyle),
         ),
         body: Column(
           children: <Widget>[
-            DataTable(
-              showCheckboxColumn: false,
-              dataRowHeight: 30.0,
-              columns: [
-                DataColumn(
-                  label: Text(''),
-                ),
-                DataColumn(
-                    label: Text(
-                  'Category',
-                  style: kTableTextStyle,
-                )),
-                DataColumn(
-                  label: Text('Score', style: kTableTextStyle),
-                ),
-              ],
-              rows: categories
-                  .map(
-                    (e) => DataRow(
-                      onSelectChanged: (bool selected) {
-                        if (selected) {
-                          game.addScore(e);
-                        }
-                      },
-                      cells: [
-                        DataCell(
-                          Icon(
-                            game.hasScore(e)
-                                ? Icons.check_box
-                                : Icons.check_box_outline_blank,
-                            color: Colors.white,
-                          ),
-                        ),
-                        DataCell(
-                          Text(e, style: kTableTextStyle),
-                        ),
-                        DataCell(
-                          Text(game.getScoreAsString(e),
-                              style: kTableTextStyle),
-                        ),
-                      ],
+            Theme(
+              data: Theme.of(context).copyWith(dividerColor: Colors.lightBlueAccent),
+              child: Center(
+                child: DataTable(
+                  showCheckboxColumn: false,
+                  dataRowHeight: 30.0,
+                  columns: [
+                    DataColumn(
+                      label: Text(''),
                     ),
-                  )
-                  .toList(),
+                    DataColumn(
+                        label: Text(
+                      'Category',
+                      style: kTableTextStyle,
+                    )),
+                    DataColumn(
+                      label: Text('Score', style: kTableTextStyle),
+                    ),
+                  ],
+                  rows: getDataRows(game),
+                ),
+              ),
             ),
           ],
         ),
@@ -71,11 +49,60 @@ class ScoreCardPage extends StatelessWidget {
           onPressed: () {
             game.nextRound();
           },
-          label: Text('Next Round'),
-          icon: Icon(FontAwesomeIcons.dice),
-          backgroundColor: Colors.pink,
+          label: Text('Save', style: kButtonTextStyle,),
+          icon: Padding(
+            padding: const EdgeInsets.all(4.0),
+            child: Icon(FontAwesomeIcons.save),
+          ),
+          backgroundColor: game.turn > 0 ? Colors.pink : Colors.pink[200],
         ),
       );
     });
+  }
+
+  List getDataRows(GameService game) {
+    List<DataRow> dataRows = List<DataRow>();
+
+    dataRows.addAll(categories
+        .map(
+          (e) => DataRow(
+            onSelectChanged: (bool selected) {
+              if (selected) {
+                game.addScore(e);
+              }
+            },
+            cells: [
+              DataCell(
+                Icon(
+                  game.hasScore(e)
+                      ? Icons.check_box
+                      : Icons.check_box_outline_blank,
+                  color: Colors.white,
+                ),
+              ),
+              DataCell(
+                Text(e, style: kTableTextStyle),
+              ),
+              DataCell(
+                Text(game.getScoreAsString(e), style: kTableTextStyle),
+              ),
+            ],
+          ),
+        )
+        .toList());
+    dataRows.add(
+      DataRow(cells: [
+        DataCell(Text('')),
+        DataCell(Text(
+          'Total',
+          style: kTableTextStyle,
+        )),
+        DataCell(Text(
+          '${game.totalScore()}',
+          style: kTableTextStyle,
+        )),
+      ]),
+    );
+    return dataRows;
   }
 }

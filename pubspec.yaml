@@ -26,3 +26,11 @@ flutter:
 
   assets:
     - images/
+
+  fonts:
+    - family: Basic
+      fonts:
+        - asset: fonts/Basic-Regular.ttf
+    - family: Lobster
+      fonts:
+        - asset: fonts/Lobster-Regular.ttf

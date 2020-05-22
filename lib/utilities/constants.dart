@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+const kAppTitle = 'Yacht Dice Game';
+
 const kOnes = "Ones";
 const kTwos = "Twos";
 const kThrees = "Threes";
@@ -14,6 +16,28 @@ const kChoice = "Choice";
 const kYacht = "Yacht";
 
 const kTableTextStyle = TextStyle(
+  fontFamily: 'Basic',
   color: Colors.white,
-  fontSize: 14.0,
+  fontWeight: FontWeight.bold,
+  fontSize: 18.0,
+);
+
+const kTurnLabelTextStyle = TextStyle(
+  fontWeight: FontWeight.bold,
+  fontFamily: 'Basic',
+  fontSize: 20,
+  color: Colors.white,
+);
+
+const kButtonTextStyle = TextStyle(
+  fontFamily: 'Basic',
+  fontWeight: FontWeight.bold,
+  fontSize: 16,
+  color: Colors.white,
+);
+
+const kAppBarTitleTextStyle = TextStyle(
+  fontFamily: 'Lobster',
+  fontSize: 28,
+  color: Colors.white,
 );

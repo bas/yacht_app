@@ -36,6 +36,14 @@ class GameService with ChangeNotifier {
     notifyListeners();
   }
 
+  bool allDicesSelected() {
+    int selectedDices = 0;
+    _dices.forEach((dice) {
+      if (dice.selected) selectedDices++;
+    });
+    return selectedDices == 5 ? true : false;
+  }
+
   void addScore(String category) {
     if (_turn == 0) return;
     _rounds.remove(_categorySelected);

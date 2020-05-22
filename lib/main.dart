@@ -15,7 +15,7 @@ void main() {
 
 class YachtApp extends StatelessWidget {
   final currentTab = [
-    RollDicePage(),
+    DicePage(),
     ScoreCardPage(),
   ];
 
