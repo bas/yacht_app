@@ -5,6 +5,7 @@ import 'package:yacht_app/utilities/score_helper.dart';
 import 'package:yacht_app/services/game_service.dart';
 import 'package:yacht_app/components/bottom_navigation_widget.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:yacht_app/components/dice_icon_widget.dart';
 
 class ScoreCardPage extends StatelessWidget {
   @override
@@ -18,7 +19,8 @@ class ScoreCardPage extends StatelessWidget {
         body: Column(
           children: <Widget>[
             Theme(
-              data: Theme.of(context).copyWith(dividerColor: Colors.lightBlueAccent),
+              data: Theme.of(context)
+                  .copyWith(dividerColor: Colors.lightBlueAccent),
               child: Center(
                 child: DataTable(
                   showCheckboxColumn: false,
@@ -40,6 +42,28 @@ class ScoreCardPage extends StatelessWidget {
                 ),
               ),
             ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                children: <Widget>[
+                  DiceIconWidget(
+                    dice: game.dices[0],
+                  ),
+                  DiceIconWidget(
+                    dice: game.dices[1],
+                  ),
+                  DiceIconWidget(
+                    dice: game.dices[2],
+                  ),
+                  DiceIconWidget(
+                    dice: game.dices[3],
+                  ),
+                  DiceIconWidget(
+                    dice: game.dices[4],
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
         bottomNavigationBar: BottomNavigationWidget(
@@ -49,7 +73,10 @@ class ScoreCardPage extends StatelessWidget {
           onPressed: () {
             game.nextRound();
           },
-          label: Text('Save', style: kButtonTextStyle,),
+          label: Text(
+            'Save',
+            style: kButtonTextStyle,
+          ),
           icon: Padding(
             padding: const EdgeInsets.all(4.0),
             child: Icon(FontAwesomeIcons.save),
@@ -74,19 +101,22 @@ class ScoreCardPage extends StatelessWidget {
             cells: [
               DataCell(
                 Icon(
-                    game.hasScore(e['category'])
-                        ? Icons.check_box
-                        : Icons.check_box_outline_blank,
-                    color: Colors.white,
-                  ),
+                  game.hasScore(e['category'])
+                      ? Icons.check_box
+                      : Icons.check_box_outline_blank,
+                  color: Colors.white,
+                ),
               ),
               DataCell(
                 Tooltip(
-                  message: e['score'],
-                  child: Text(e['category'], style: kTableTextStyle)),
+                    message: e['score'],
+                    child: Text(e['category'], style: kTableTextStyle)),
               ),
               DataCell(
-                Text(game.getScoreAsString(e['category']), style: kTableTextStyle,),
+                Text(
+                  game.getScoreAsString(e['category']),
+                  style: kTableTextStyle,
+                ),
               ),
             ],
           ),
