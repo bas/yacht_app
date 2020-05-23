@@ -35,15 +35,10 @@ class GameService with ChangeNotifier {
     if (_turn > 0) {
       dice.selected ? dice.selected = false : dice.selected = true;
     }
+    if (_dices.every((dice) => dice.selected)) {
+      _currentIndex = 1;
+    }
     notifyListeners();
-  }
-
-  bool allDicesSelected() {
-    int selectedDices = 0;
-    _dices.forEach((dice) {
-      if (dice.selected) selectedDices++;
-    });
-    return selectedDices == 5 ? true : false;
   }
 
   void addScore(String category) {
