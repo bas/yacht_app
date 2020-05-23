@@ -66,9 +66,7 @@ class ScoreCardPage extends StatelessWidget {
             ),
           ],
         ),
-        bottomNavigationBar: BottomNavigationWidget(
-          game: game,
-        ),
+        bottomNavigationBar: BottomNavigationWidget(),
         floatingActionButton: FloatingActionButton.extended(
           onPressed: () {
             game.nextRound();
