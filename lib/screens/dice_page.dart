@@ -32,12 +32,14 @@ class DicePage extends StatelessWidget {
                 children: <Widget>[
                   DiceWidget(
                     dice: game.dices[0],
+                    turn: game.turn,
                     diceHandler: () {
                       game.toggleDiceSelected(game.dices[0]);
                     },
                   ),
                   DiceWidget(
                     dice: game.dices[1],
+                    turn: game.turn,
                     diceHandler: () {
                       game.toggleDiceSelected(game.dices[1]);
                     },
@@ -48,12 +50,14 @@ class DicePage extends StatelessWidget {
                 children: <Widget>[
                   DiceWidget(
                     dice: game.dices[2],
+                    turn: game.turn,
                     diceHandler: () {
                       game.toggleDiceSelected(game.dices[2]);
                     },
                   ),
                   DiceWidget(
                     dice: game.dices[3],
+                    turn: game.turn,
                     diceHandler: () {
                       game.toggleDiceSelected(game.dices[3]);
                     },
@@ -64,6 +68,7 @@ class DicePage extends StatelessWidget {
                 children: <Widget>[
                   DiceWidget(
                     dice: game.dices[4],
+                    turn: game.turn,
                     diceHandler: () {
                       game.toggleDiceSelected(game.dices[4]);
                     },
