@@ -27,7 +27,7 @@ class DiceWidget extends StatelessWidget {
   }
 
   getDiceColor() {
-    if (turn == 0) return Colors.lightBlue[50];
+    if (turn == 0) return Colors.deepOrange[50];
     if (dice.selected) {
       return Colors.deepOrange;
     } else {
