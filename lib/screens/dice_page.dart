@@ -7,7 +7,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:yacht_app/utilities/constants.dart';
 
 class DicePage extends StatelessWidget {
-  List<String> _turnLabels = [
+  final List<String> _turnLabels = [
     'Roll the dice!',
     'First roll',
     'Second roll',

@@ -68,23 +68,25 @@ class ScoreCardPage extends StatelessWidget {
           (e) => DataRow(
             onSelectChanged: (bool selected) {
               if (selected) {
-                game.addScore(e);
+                game.addScore(e['category']);
               }
             },
             cells: [
               DataCell(
                 Icon(
-                  game.hasScore(e)
-                      ? Icons.check_box
-                      : Icons.check_box_outline_blank,
-                  color: Colors.white,
-                ),
+                    game.hasScore(e['category'])
+                        ? Icons.check_box
+                        : Icons.check_box_outline_blank,
+                    color: Colors.white,
+                  ),
               ),
               DataCell(
-                Text(e, style: kTableTextStyle),
+                Tooltip(
+                  message: e['score'],
+                  child: Text(e['category'], style: kTableTextStyle)),
               ),
               DataCell(
-                Text(game.getScoreAsString(e), style: kTableTextStyle,),
+                Text(game.getScoreAsString(e['category']), style: kTableTextStyle,),
               ),
             ],
           ),

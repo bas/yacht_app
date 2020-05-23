@@ -4,13 +4,21 @@ import 'package:yacht_app/utilities/score_helper.dart';
 import 'dart:math';
 
 class GameService with ChangeNotifier {
+
+  // turn within a round of three turns
   int _turn = 0;
+
+  // current page (dice or score card)
   int _currentIndex = 0;
 
+  // category selected on score page to allow user to change
+  // the category before saving the score
   String _categorySelected;
 
+  // rounds (there are 12 catergories you can score)
   Map<String, int> _rounds = Map<String, int>();
 
+  // the values for the five dicesin a current rounds
   List<DiceModel> _dices = List.generate(5, (index) => DiceModel());
 
   List<DiceModel> get dices => _dices;

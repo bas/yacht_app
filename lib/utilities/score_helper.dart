@@ -1,19 +1,19 @@
 import 'package:flutter/foundation.dart';
 import 'constants.dart';
 
-const List<String> categories = [
-  kOnes,
-  kTwos,
-  kThrees,
-  kFours,
-  kFives,
-  kSixes,
-  kFullHouse,
-  kFourOfAKind,
-  kLittleStraight,
-  kBigStraight,
-  kChoice,
-  kYacht
+const List<Map<String, String>> categories = [
+  {'category': kOnes, 'score': 'The sum of dice with the number 1'},
+  {'category': kTwos, 'score': 'The sum of dice with the number 2'},
+  {'category': kThrees, 'score': 'The sum of dice with the number 3'},
+  {'category': kFours, 'score': 'The sum of dice with the number 4'},
+  {'category': kFives, 'score': 'The sum of dice with the number 5'},
+  {'category': kSixes, 'score': 'The sum of dice with the number 6'},
+  {'category': kFullHouse, 'score': 'Sum of three of one number and two of another'},
+  {'category': kFourOfAKind, 'score': 'Sum of at least four dice showing the same face'},
+  {'category': kLittleStraight, 'score': '1-2-3-4-5 (30 points)'},
+  {'category': kBigStraight, 'score': '2-3-4-5-6 (30 points)'},
+  {'category': kChoice, 'score': 'Sum of all dice with any combination'},
+  {'category': kYacht, 'score': 'All five dice showing the same face (50 points)'},
 ];
 
 int _count(List<int> dice, int n) {
